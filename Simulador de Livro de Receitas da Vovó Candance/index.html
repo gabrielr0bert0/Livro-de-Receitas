@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Receitas da Vovó Candance!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFA3ED;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #D7A0EE;
+            box-shadow: 0 0 10px #f3f3f31a;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            width: 200px; /* Controla o tamanho exibido */
+            margin: 10px;
+            image-rendering: crisp-edges; /* Preserva detalhes */
+            image-rendering: pixelated;  /* Deixa os pixels nítidos */
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .recipe {
+            display: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .recipe h2 {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diário de Receitas da Vovó Candance!</h1>
+        <!-- Imagem da vovó com estilo atualizado -->
+        <img id="chef-img" src="cozinheira1.png" alt="Cozinheira">
+        <p id="intro-text">Clique no botão abaixo para ler receitas do diário da vovó.</p>
+        <a id="start-button" class="button">Ler Receitas</a>
+
+        <!-- Botões de receitas -->
+        <div id="recipe-buttons" style="display: none;">
+            <a class="button" onclick="showRecipe('bolo')">Bolo de Chocolate</a>
+            <a class="button" onclick="showRecipe('sopa')">Sopa de Legumes</a>
+            <a class="button" onclick="showRecipe('torta')">Torta de Maçã</a>
+        </div>
+
+        <!-- Área para exibir a receita -->
+        <div id="recipe-display" class="recipe">
+            <h2 id="recipe-title"></h2>
+            <p id="recipe-text"></p>
+        </div>
+    </div>
+
+    <script>
+        // Dados das receitas
+        const receitas = {
+            bolo: {
+                titulo: "Bolo de Chocolate",
+                texto: "Ingredientes:\n- 2 xícaras de farinha\n- 1 xícara de açúcar\n- 1 xícara de chocolate em pó\n\nModo de preparo:\nMisture tudo e asse a 180°C por 30 minutos."
+            },
+            sopa: {
+                titulo: "Sopa de Legumes",
+                texto: "Ingredientes:\n- 2 cenouras\n- 2 batatas\n- Água e temperos\n\nModo de preparo:\nCozinhe tudo na panela por 20 minutos."
+            },
+            torta: {
+                titulo: "Torta de Maçã",
+                texto: "Ingredientes:\n- 3 maçãs\n- Massa para torta\n- Açúcar e canela\n\nModo de preparo:\nAsse as maçãs com a massa por 25 minutos a 200°C."
+            }
+        };
+
+        // Mudar para a tela de receitas
+        document.getElementById("start-button").onclick = function () {
+            document.getElementById("chef-img").src = "cozinheira2.png";
+            document.getElementById("intro-text").style.display = "none";
+            document.getElementById("start-button").style.display = "none";
+            document.getElementById("recipe-buttons").style.display = "block";
+        };
+
+        // Exibir a receita selecionada
+        function showRecipe(recipeKey) {
+            const recipe = receitas[recipeKey];
+            document.getElementById("recipe-title").textContent = recipe.titulo;
+            document.getElementById("recipe-text").textContent = recipe.texto;
+            document.getElementById("recipe-display").style.display = "block";
+        }
+    </script>
+</body>
+</html>
